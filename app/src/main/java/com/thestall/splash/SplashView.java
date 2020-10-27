@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -27,7 +28,6 @@ public class SplashView extends View {
     private void init(Context ctx){
         MyContext = ctx;
         BackGround.setStyle(Paint.Style.FILL);
-        //BackGround.setColor(Color.BLACK);
         BackGround.setColor(Color.argb(255,252,136,57));
     }
 
@@ -46,14 +46,40 @@ public class SplashView extends View {
         //drawing orange background
         canvas.drawRect(0,0,w,h,BackGround);
 
-        //drawing the plop logo
+        //initializing logo bitmap
         Bitmap logo = BitmapFactory.decodeResource(getResources(),R.drawable.pngfuel_com);
 
+        //changing the size of the logo while preserving the aspect ratio
         float aspectRatio = logo.getWidth()/(float) logo.getHeight();
         int width=400;
         int height = Math.round(width/aspectRatio);
         logo = Bitmap.createScaledBitmap(logo, width, height, false);
 
-        canvas.drawBitmap(logo,(w-logo.getWidth())/2,(h-logo.getHeight())/3,null);
+        //getting center of width
+        float wLogoPos = (w-logo.getWidth())/2;
+        //getting slightly higher than centre height
+        float hLogoPos = (h-logo.getHeight())/4;
+
+        //drawing the logo in the middle of the canvas
+        canvas.drawBitmap(logo,wLogoPos,hLogoPos,null);
+
+        //Text section under the logo
+        //PLOP text
+        Paint plopText = new Paint(Paint.ANTI_ALIAS_FLAG);
+        Typeface plopTextType = Typeface.create(Typeface.DEFAULT,Typeface.BOLD);
+        plopText.setTypeface(plopTextType);
+        plopText.setTextSize(140);
+        plopText.setTextAlign(Paint.Align.CENTER);
+
+        canvas.drawText("PLOP", w/2, hLogoPos+600, plopText);
+
+        //Toilet Radar text
+        Paint toiletText = new Paint(Paint.ANTI_ALIAS_FLAG);
+        //Typeface toiletTextType = Typeface.create(Typeface.DEFAULT,Typeface.BOLD);
+        //toiletText.setTypeface(toiletTextType);
+        toiletText.setTextSize(100);
+        toiletText.setTextAlign(Paint.Align.CENTER);
+
+        canvas.drawText("Toilet Radar", w/2, hLogoPos+700, toiletText);
     }
 }
