@@ -4,37 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
     tools:context=".ui.notifications.NotificationsFragment">
-
-    <ImageButton
-        android:id="@+id/backBtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backarrow" />
-
-    <Button
-        android:id="@+id/ContinueBut"
-        android:layout_width="286dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="78dp"
-        android:background="@color/orange"
-        android:backgroundTint="@color/black"
-        android:text="@string/Continue"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch6"
-        app:layout_constraintVertical_bias="0.0" />
 
     <Switch
         android:id="@+id/switch2"
@@ -53,7 +24,7 @@
         android:layout_width="347dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         android:text="@string/Notfi_Header"
         app:layout_constraintEnd_toEndOf="parent"
