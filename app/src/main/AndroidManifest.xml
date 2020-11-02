@@ -14,7 +14,6 @@
             android:label="@string/title_activity_bottom_nav"></activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".NotificationActivity" />
         <activity android:name=".MainActivity">
 
             <intent-filter>

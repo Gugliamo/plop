@@ -15,7 +15,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private TextView signUpText;
     private TextView guestText;
-    private ImageButton nButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +50,7 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        nButton = (ImageButton) findViewById(R.id.notifiButton);
-        nButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(SignInActivity.this, NotificationActivity.class);
-                startActivity(newIntent);
-            }
-        });
+
 
     }
 
