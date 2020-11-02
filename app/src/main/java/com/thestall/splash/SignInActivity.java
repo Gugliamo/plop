@@ -13,6 +13,7 @@ import org.w3c.dom.Text;
 public class SignInActivity extends AppCompatActivity {
 
     private TextView signUpText;
+    private TextView guestText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,17 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //send user to signUpActivity
                 Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //onclick listener for loginAsGuest textview
+        guestText = (TextView) findViewById(R.id.loginAsGuest);
+        guestText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //send user to BottomNavActivity
+                Intent intent = new Intent(SignInActivity.this, BottomNavActivity.class);
                 startActivity(intent);
             }
         });
