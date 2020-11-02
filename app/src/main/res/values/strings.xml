@@ -4,4 +4,24 @@
     <string name="title_home">Home</string>
     <string name="title_map">Map</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="Notfi_Header">Notification</string>
+
+    <string name="NewsLetter">Newsletter and Updates</string>
+
+    <string name="Offers">Special Offers</string>
+
+    <string name="tripHeader">Trips</string>
+
+    <string name="Pre_Trip">Pre-Trip Reminder</string>
+
+    <string name="About_trips">About my trips</string>
+
+    <string name="FollowingTrips">About trips im following</string>
+
+    <string name="Changes">Changes to trips Im following</string>
+
+    <string name="Continue">Continue</string>
+
+    <string name="title_activity_notification">NotificationActivity</string>
 </resources>

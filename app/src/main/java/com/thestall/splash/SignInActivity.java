@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -14,7 +15,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private TextView signUpText;
     private TextView guestText;
-
+    private ImageButton nButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,14 @@ public class SignInActivity extends AppCompatActivity {
                 //send user to BottomNavActivity
                 Intent intent = new Intent(SignInActivity.this, BottomNavActivity.class);
                 startActivity(intent);
+            }
+        });
+        nButton = (ImageButton) findViewById(R.id.notifiButton);
+        nButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(SignInActivity.this, NotificationActivity.class);
+                startActivity(newIntent);
             }
         });
 
