@@ -24,4 +24,7 @@
     <string name="Continue">Continue</string>
 
     <string name="title_activity_notification">NotificationActivity</string>
+
+    <string name="Title">Title</string>
+    <string name="Write">Write Something...</string>
 </resources>
