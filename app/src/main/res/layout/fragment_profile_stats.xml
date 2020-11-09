@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.profile.ProfileStatsFragment">
+
+    <TextView
+        android:id="@+id/reviews_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="250"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/dividerLeft"
+        android:layout_width="1dp"
+        android:layout_height="65dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toStartOf="@+id/reviews_value"
+        app:layout_constraintStart_toEndOf="@+id/submissions_value"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/dividerRight"
+        android:layout_width="1dp"
+        android:layout_height="65dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toStartOf="@+id/rating_value"
+        app:layout_constraintStart_toEndOf="@+id/reviews_value"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/submissions_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:text="125"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rating_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="35dp"
+        android:text="1256"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/submissions_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submissions"
+        android:textColor="#4E4E4E"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/submissions_value"
+        app:layout_constraintStart_toStartOf="@+id/submissions_value"
+        app:layout_constraintTop_toBottomOf="@+id/submissions_value" />
+
+    <TextView
+        android:id="@+id/reviews_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Reviews"
+        android:textColor="#4E4E4E"
+        app:layout_constraintEnd_toEndOf="@+id/reviews_value"
+        app:layout_constraintStart_toStartOf="@+id/reviews_value"
+        app:layout_constraintTop_toBottomOf="@+id/reviews_value" />
+
+    <TextView
+        android:id="@+id/rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Rating"
+        android:textColor="#4E4E4E"
+        app:layout_constraintEnd_toEndOf="@+id/rating_value"
+        app:layout_constraintStart_toStartOf="@+id/rating_value"
+        app:layout_constraintTop_toBottomOf="@+id/rating_value" />
+</androidx.constraintlayout.widget.ConstraintLayout>

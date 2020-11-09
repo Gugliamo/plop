@@ -3,15 +3,18 @@ package com.thestall.splash;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private ImageButton backBtn;
+    private Button signIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,17 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        //onclick listener for signupButton button
+        signIn = (Button) findViewById(R.id.signupButton);
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //send user to BottomNavActivity
+                Intent intent = new Intent(SignUpActivity.this, BottomNavActivity.class);
+                startActivity(intent);
             }
         });
     }

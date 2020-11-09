@@ -22,9 +22,12 @@
     <string name="Changes">Changes to trips Im following</string>
 
     <string name="Continue">Continue</string>
+    <string name="title_profile">Profile</string>
 
     <string name="title_activity_notification">NotificationActivity</string>
 
     <string name="Title">Title</string>
     <string name="Write">Write Something...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

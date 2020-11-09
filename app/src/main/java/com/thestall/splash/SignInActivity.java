@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private TextView signUpText;
     private TextView guestText;
+    private Button signIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,17 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //send user to BottomNavActivity
                 Intent intent = new Intent(SignInActivity.this, BottomNavActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //onclick listener for signinButton
+        signIn = (Button) findViewById(R.id.signinButton);
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //send user to bottomNavActivity
+                Intent intent = new Intent(SignInActivity.this,BottomNavActivity.class);
                 startActivity(intent);
             }
         });
