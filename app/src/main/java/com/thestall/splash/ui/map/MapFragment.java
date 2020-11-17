@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.thestall.splash.R;
+
+import java.util.List;
 
 public class MapFragment extends Fragment {
 
@@ -30,6 +32,7 @@ public class MapFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_map, container, false);
 
 
+        //not needed code block, remove when have time
         final TextView textView = root.findViewById(R.id.text_dashboard);
         mapViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -39,16 +42,63 @@ public class MapFragment extends Fragment {
         });
 
 
+/*
+        //FragmentManager fm = getParentFragmentManager();
+        //List<Fragment> fragments = fm.getFragments();
+       // final Fragment details = new LocationDetailsFragment();
+        //catch the profile details fragment
+        final Fragment details = this.getFragmentManager().findFragmentByTag("locationDetails");
+
+
+        //onclick listener for end point imageButton
+        root.findViewById(R.id.endLocation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction()
+                        .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                        .hide(details)
+                        .commit();
+
+            }
+        });
+*/
+
+
+
 
         return root;
-
-
-
-
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
+        final FragmentManager fm = getChildFragmentManager();
+        List<Fragment> fragments = fm.getFragments();
+
+        final Fragment details = this.getChildFragmentManager().findFragmentByTag("locationDetails");
+        fm.beginTransaction().hide(details).commit();
+
+
+        //onclick listener for end point imageButton
+        view.findViewById(R.id.endLocation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(details.isHidden())
+                {
+                    fm.beginTransaction()
+                            .show(details)
+                            .commit();
+                }
+                else
+                {
+                    fm.beginTransaction()
+                            .hide(details)
+                            .commit();
+                }
+            }
+        });
+
 
 
     }

@@ -30,7 +30,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_map_background" />
 
     <ImageButton
         android:id="@+id/endLocation"
@@ -48,11 +49,14 @@
     <fragment
         android:id="@+id/location_details"
         android:name="com.thestall.splash.ui.map.LocationDetailsFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_width="269dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="4dp"
+        android:tag="locationDetails"
         app:layout_constraintEnd_toEndOf="@+id/endLocation"
+        app:layout_constraintHorizontal_bias="0.668"
         app:layout_constraintStart_toStartOf="@+id/endLocation"
-        app:layout_constraintTop_toBottomOf="@+id/endLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/endLocation"
+        tools:layout="@layout/fragment_location_details" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
