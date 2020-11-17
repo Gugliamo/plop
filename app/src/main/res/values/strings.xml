@@ -28,6 +28,7 @@
 
     <string name="Title">Title</string>
     <string name="Write">Write Something...</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="create_post">Create post</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

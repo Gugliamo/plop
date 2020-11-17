@@ -41,32 +41,6 @@ public class MapFragment extends Fragment {
             }
         });
 
-
-/*
-        //FragmentManager fm = getParentFragmentManager();
-        //List<Fragment> fragments = fm.getFragments();
-       // final Fragment details = new LocationDetailsFragment();
-        //catch the profile details fragment
-        final Fragment details = this.getFragmentManager().findFragmentByTag("locationDetails");
-
-
-        //onclick listener for end point imageButton
-        root.findViewById(R.id.endLocation).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fm = getFragmentManager();
-                fm.beginTransaction()
-                        .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                        .hide(details)
-                        .commit();
-
-            }
-        });
-*/
-
-
-
-
         return root;
     }
 

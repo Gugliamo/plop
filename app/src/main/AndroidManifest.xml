@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileDetailsActivity"></activity>
-        <activity android:name=".ui.post.CreatePost" />
-        <activity android:name=".ui.post.Post" />
+        <activity android:name=".ui.post.CreatePostActivity" />
+        <activity android:name=".ui.post.PostActivity" />
         <activity
             android:name=".BottomNavActivity"
             android:label="@string/title_activity_bottom_nav" />

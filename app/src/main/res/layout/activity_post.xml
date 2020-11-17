@@ -6,20 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    tools:context=".ui.post.Post">
+    tools:context=".ui.post.PostActivity">
+
+    <Button
+        android:id="@+id/backBtnPost"
+        android:layout_width="36dp"
+        android:layout_height="34dp"
+        android:background="@drawable/backarrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="416dp"
-        android:layout_height="432dp"
-        android:layout_marginTop="42dp"
+        android:layout_width="434dp"
+        android:layout_height="443dp"
         android:layout_marginBottom="487dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113"
+        app:layout_constraintVertical_bias="0.105"
         app:srcCompat="@drawable/photo" />
 
     <EditText
@@ -30,6 +41,7 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="textPersonName"
+        android:paddingStart="50dp"
         android:text="Comment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
