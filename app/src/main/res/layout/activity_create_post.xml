@@ -69,4 +69,40 @@
         app:layout_constraintTop_toBottomOf="@+id/AddTitleText"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="86dp"
+        android:layout_height="85dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ReviewTextBox"
+        app:layout_constraintEnd_toStartOf="@+id/imageView12"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toStartOf="@+id/ReviewTextBox"
+        app:layout_constraintTop_toBottomOf="@+id/AddTitleText"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/photo1" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="84dp"
+        android:layout_height="85dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ReviewTextBox"
+        app:layout_constraintEnd_toStartOf="@+id/imageView13"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="@+id/ReviewTextBox"
+        app:layout_constraintTop_toBottomOf="@+id/AddTitleText"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/photo2" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ReviewTextBox"
+        app:layout_constraintEnd_toEndOf="@+id/ReviewTextBox"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@+id/ReviewTextBox"
+        app:layout_constraintTop_toBottomOf="@+id/AddTitleText"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/photo3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
