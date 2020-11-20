@@ -4,31 +4,42 @@
     <string name="title_home">Home</string>
     <string name="title_map">Map</string>
     <string name="title_notifications">Notifications</string>
-
     <string name="Notfi_Header">Notification</string>
-
     <string name="NewsLetter">Newsletter and Updates</string>
-
     <string name="Offers">Special Offers</string>
-
     <string name="tripHeader">Trips</string>
-
     <string name="Pre_Trip">Pre-Trip Reminder</string>
-
     <string name="About_trips">About my trips</string>
-
     <string name="FollowingTrips">About trips im following</string>
-
     <string name="Changes">Changes to trips Im following</string>
-
     <string name="Continue">Continue</string>
     <string name="title_profile">Profile</string>
-
     <string name="title_activity_notification">NotificationActivity</string>
-
     <string name="Title">Title</string>
     <string name="Write">Write Something...</string>
     <string name="create_post">Create post</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="privacy">Privacy</string>
+    <string name="Interests">Interests</string>
+    <string name="Password">Password</string>
+    <string name="Email">Email Address</string>
+    <string name="create_Account">Create Account</string>
+    <string name="Login_as_Guest">Login as Guest</string>
+    <string name="Sign_In">Sign In</string>
+    <string name="User_Name">User Name</string>
+    <string name="Details">Details</string>
+    <string name="Submissions">Submissions</string>
+    <string name="Reviews">Reviews</string>
+    <string name="Rating">Rating</string>
+
+
+    <!-- Strings that will be deleted after -->
+
+    <string name="Jimothy_Barnes">Jimothy Barnes</string>
+    <string name="PhoneNum">Phone Number</string>
+    <string name="Num">+1 416 555 9829</string>
+    <string name="age">Age</string>
+    <string name="thirty">31</string>
+    <string name="Toilet_Pro">Toilet Pro</string>
 </resources>
