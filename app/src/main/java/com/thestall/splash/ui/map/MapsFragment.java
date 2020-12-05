@@ -26,7 +26,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.thestall.splash.R;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -40,17 +42,23 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     private Polyline mPolyline;
 
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private Location lastKnownLocation;
+    private final LatLng defaultLocation = new LatLng(-33.8523341, 151.2106085);
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
 
         @Override
         public void onMapReady(GoogleMap googleMap) {
+            mMap = googleMap;
 
+            getDeviceLocation();
 
-
+            /*
             LatLng sydney = new LatLng(-34, 151);
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
         }
     };
 
@@ -81,10 +89,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 Toast.makeText(getContext(), "Location Permission Denied",
                         Toast.LENGTH_LONG).show();
             else
-                getLocation();
+                getDeviceLocation();
         }
     }
-
+/*
     private void getLocation() {
         FusedLocationProviderClient fusedLocationClient;
         fusedLocationClient =
@@ -119,13 +127,57 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                     });
         }
     }
+*/
+    private void getDeviceLocation() {
+        /*
+         * Get the best and most recent location of the device, which may be null in rare
+         * cases when a location is not available.
+         */
+        try {
+            if (ActivityCompat.checkSelfPermission(getContext(), ACCESS_FINE_LOCATION)
+                    == PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(getContext(), ACCESS_COARSE_LOCATION)
+                            == PERMISSION_GRANTED) {
+                Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
+                locationResult.addOnCompleteListener(getActivity(), new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        if (task.isSuccessful()) {
+                            // Set the map's camera position to the current location of the device.
+                            lastKnownLocation = task.getResult();
+                            if (lastKnownLocation != null) {
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(lastKnownLocation.getLatitude(),
+                                                lastKnownLocation.getLongitude()), 8));
+
+
+                            }
+                        } else {
+                            Log.d("APP", "Current location is null. Using defaults.");
+                            Log.e("APP", "Exception: %s", task.getException());
+                            mMap.moveCamera(CameraUpdateFactory
+                                    .newLatLngZoom(defaultLocation, 8));
+                            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+                        }
+                    }
+                });
+            }
+        } catch (SecurityException e)  {
+            Log.e("Exception: %s", e.getMessage(), e);
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_maps, container, false);
+        View view = inflater.inflate(R.layout.fragment_maps, container, false);
+
+        // Construct a FusedLocationProviderClient.
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+
+        return  view;
     }
 
     @Override
