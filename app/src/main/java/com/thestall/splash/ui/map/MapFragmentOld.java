@@ -18,7 +18,7 @@ import com.thestall.splash.R;
 
 import java.util.List;
 
-public class MapFragment extends Fragment {
+public class MapFragmentOld extends Fragment {
 
     private MapViewModel mapViewModel;
 
@@ -29,7 +29,7 @@ public class MapFragment extends Fragment {
 
 
 
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
+        View root = inflater.inflate(R.layout.fragment_map_old, container, false);
 
 
         //not needed code block, remove when have time

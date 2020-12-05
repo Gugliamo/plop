@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.thestall.splash.ui.map.MapFragment"
+        android:name="com.thestall.splash.ui.map.MapsFragment"
         android:label="@string/title_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map_old" />
 
     <fragment
         android:id="@+id/navigation_notifications"
