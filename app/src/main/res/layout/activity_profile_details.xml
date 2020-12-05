@@ -50,77 +50,77 @@
         android:id="@+id/ProfDetailNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/ProfDetailAvatar"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="@string/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ProfDetailAvatar" />
 
     <EditText
         android:id="@+id/ProfDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jimothy Barnes"
         android:layout_marginEnd="40dp"
-        app:layout_constraintTop_toTopOf="@id/ProfDetailNameLabel"
+        android:text="@string/Jimothy_Barnes"
         app:layout_constraintBottom_toBottomOf="@id/ProfDetailNameLabel"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ProfDetailNameLabel" />
 
     <TextView
         android:id="@+id/ProfDetailPhoneLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:text="@string/PhoneNum"
         app:layout_constraintStart_toStartOf="@id/ProfDetailNameLabel"
-        app:layout_constraintTop_toBottomOf="@id/ProfDetailNameLabel"
-        android:text="Phone Number" />
+        app:layout_constraintTop_toBottomOf="@id/ProfDetailNameLabel" />
 
     <EditText
         android:id="@+id/ProfDetailPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="phone"
-        android:text="+1 416 555 9829"
+        android:text="@string/Num"
+        app:layout_constraintBottom_toBottomOf="@id/ProfDetailPhoneLabel"
         app:layout_constraintEnd_toEndOf="@id/ProfDetailName"
-        app:layout_constraintTop_toTopOf="@id/ProfDetailPhoneLabel"
-        app:layout_constraintBottom_toBottomOf="@id/ProfDetailPhoneLabel"/>
+        app:layout_constraintTop_toTopOf="@id/ProfDetailPhoneLabel" />
 
     <TextView
         android:id="@+id/ProfDetailAgeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:text="@string/age"
         app:layout_constraintStart_toStartOf="@id/ProfDetailPhoneLabel"
-        app:layout_constraintTop_toBottomOf="@id/ProfDetailPhoneLabel"
-        android:text="Age" />
+        app:layout_constraintTop_toBottomOf="@id/ProfDetailPhoneLabel" />
 
     <EditText
         android:id="@+id/ProfDetailAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="31"
-        app:layout_constraintEnd_toEndOf="@id/ProfDetailPhone"
-        app:layout_constraintTop_toTopOf="@id/ProfDetailAgeLabel"
+        android:inputType="number"
+        android:text="@string/thirty"
         app:layout_constraintBottom_toBottomOf="@id/ProfDetailAgeLabel"
-        android:inputType="number" />
+        app:layout_constraintEnd_toEndOf="@id/ProfDetailPhone"
+        app:layout_constraintTop_toTopOf="@id/ProfDetailAgeLabel" />
 
     <Switch
         android:id="@+id/ProfDetailPrivacySwitch"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:text="@string/privacy"
         app:layout_constraintStart_toStartOf="@id/ProfDetailAgeLabel"
         app:layout_constraintTop_toBottomOf="@id/ProfDetailAgeLabel"
-        android:text="Privacy"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/ProfDetailInterests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Interests"
         android:layout_marginTop="40dp"
+        android:text="@string/Interests"
         app:layout_constraintStart_toStartOf="@id/ProfDetailPrivacySwitch"
-        app:layout_constraintTop_toBottomOf="@id/ProfDetailPrivacySwitch"/>
+        app:layout_constraintTop_toBottomOf="@id/ProfDetailPrivacySwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
