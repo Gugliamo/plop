@@ -32,6 +32,7 @@
     <string name="Submissions">Submissions</string>
     <string name="Reviews">Reviews</string>
     <string name="Rating">Rating</string>
+    <string name="keep_signed_in">Keep user signed in?</string>
 
 
     <!-- Strings that will be deleted after -->
