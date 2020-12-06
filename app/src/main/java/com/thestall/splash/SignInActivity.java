@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -29,6 +32,7 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText signInEmail;
     private EditText signInPass;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +83,36 @@ public class SignInActivity extends AppCompatActivity {
                 //send user to bottomNavActivity
                 signIn(signInEmail.getText().toString(),
                         signInPass.getText().toString());
-                //Toast.makeText(SignInActivity.this,signInEmail.getText().toString(),Toast.LENGTH_SHORT).show();
-                // Toast.makeText(SignInActivity.this,email.getText().toString(),Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        final SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+
+        //onclick listener for "keep user signed in" checkbox
+        checkBox = (CheckBox) findViewById(R.id.keepSignedCheckbox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean checked = ((CheckBox) view).isChecked();
+                if(checked){//if checkbox is checked
+                    //add user preference as boolean to sharepref
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("CheckBox_Value", checkBox.isChecked());
+                    editor.apply();
+                    //toast to show change happened
+                    Toast.makeText(SignInActivity.this, "Keep user signed in.", Toast.LENGTH_SHORT).show();
+
+                } else {//if not checked
+                    //add user preference as boolean to sharepref
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("CheckBox_Value", checkBox.isChecked());
+                    editor.apply();
+                    //toast to show change happened
+                    Toast.makeText(SignInActivity.this, "Do not keep user signed in.", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

@@ -3,6 +3,7 @@ package com.thestall.splash;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +60,6 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //send user to BottomNavActivity
                 createAccount(email.getText().toString(),pass.getText().toString());
-                Toast.makeText(SignUpActivity.this,email.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -78,19 +78,20 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            //Log.d(TAG, "createUserWithEmail:success");
+
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            //send user to sign in activity on success
+                            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                            startActivity(intent);
+
+
                         } else {
                             // If sign in fails, display a message to the user.
-                            //Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+
                         }
 
-                        // ...
                     }
                 });
 
