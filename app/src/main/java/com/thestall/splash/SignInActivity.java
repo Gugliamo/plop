@@ -1,5 +1,6 @@
 package com.thestall.splash;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,8 +8,16 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -17,15 +26,24 @@ public class SignInActivity extends AppCompatActivity {
     private TextView signUpText;
     private TextView guestText;
     private Button signIn;
+    private FirebaseAuth mAuth;
+    private EditText signInEmail;
+    private EditText signInPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         //remove top bar with title
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_sign_in);
+
+        mAuth = FirebaseAuth.getInstance();
+        signInEmail = (EditText) findViewById(R.id.SignInEmailAddress);
+        signInPass = (EditText) findViewById(R.id.SignInTextPassword);
 
         //setting background color to orange
         View background = findViewById(R.id.signInActivity);
@@ -59,12 +77,41 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //send user to bottomNavActivity
-                Intent intent = new Intent(SignInActivity.this,BottomNavActivity.class);
-                startActivity(intent);
+                signIn(signInEmail.getText().toString(),
+                        signInPass.getText().toString());
+                //Toast.makeText(SignInActivity.this,signInEmail.getText().toString(),Toast.LENGTH_SHORT).show();
+                // Toast.makeText(SignInActivity.this,email.getText().toString(),Toast.LENGTH_SHORT).show();
+
             }
         });
 
 
+    }
+    private void signIn(String email, String password) {
+
+
+
+        // [START sign_in_with_email]
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(SignInActivity.this,BottomNavActivity.class);
+                            startActivity(intent);
+
+                        } else {
+                            Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        if (!task.isSuccessful()) {
+
+                        }
+
+                    }
+                });
+        // [END sign_in_with_email]
     }
 
 }
