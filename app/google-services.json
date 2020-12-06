@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "350464602673",
+    "project_id": "plop-956d2",
+    "storage_bucket": "plop-956d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350464602673:android:b489c88d54bf26e4545b10",
+        "android_client_info": {
+          "package_name": "com.thestall.splash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350464602673-augolfe4tpd7p0n9a9243iailnnm5416.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thestall.splash",
+            "certificate_hash": "465c35ca17db270ec13da1a251c4d8513e0c2ab3"
+          }
+        },
+        {
+          "client_id": "350464602673-3f19mfajn0n9nr0muge02c83e8rjromc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7aqZOH203LwVB7uPK2bLl2SGDoeHK5cE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350464602673-3f19mfajn0n9nr0muge02c83e8rjromc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
