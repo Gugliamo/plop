@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     private TextView signUpText;
     private TextView guestText;
     private Button signIn;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
     private EditText signInEmail;
     private EditText signInPass;
     private CheckBox checkBox;
@@ -38,16 +38,21 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         //remove top bar with title
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_sign_in);
-
-        mAuth = FirebaseAuth.getInstance();
         signInEmail = (EditText) findViewById(R.id.SignInEmailAddress);
         signInPass = (EditText) findViewById(R.id.SignInTextPassword);
+
+        if(mAuth.getCurrentUser() != null) {
+            if(sharedPreferences.getBoolean("CheckBox_Value", false)) {
+                Intent intent = new Intent(SignInActivity.this,BottomNavActivity.class);
+                startActivity(intent);
+            }
+        }
 
         //setting background color to orange
         View background = findViewById(R.id.signInActivity);
@@ -86,9 +91,6 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
-
-        final SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext());
 
         //onclick listener for "keep user signed in" checkbox
         checkBox = (CheckBox) findViewById(R.id.keepSignedCheckbox);
