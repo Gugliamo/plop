@@ -1,5 +1,6 @@
 package com.thestall.splash;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -13,9 +14,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class BottomNavActivity extends AppCompatActivity {
 
     private Button profileDetails;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,10 @@ public class BottomNavActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+        if(mAuth.getCurrentUser() == null) {
+            navView.getMenu().findItem(R.id.navigation_profile).setEnabled(false);
+            navView.getMenu().findItem(R.id.navigation_profile).getIcon().setTint(Color.argb(255, 192, 192, 192));
+        }
 
         /*
         //catch the profile details fragment

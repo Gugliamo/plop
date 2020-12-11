@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     private TextView signUpText;
     private TextView guestText;
     private Button signIn;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private EditText signInEmail;
     private EditText signInPass;
     private CheckBox checkBox;
