@@ -46,4 +46,5 @@
     <string name="Toilet_Pro">Toilet Pro</string>
     <string name="update_profile">Update Profile</string>
     <string name="no_name">No Name Found</string>
+    <string name="logout">Log out</string>
 </resources>
