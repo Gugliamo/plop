@@ -52,6 +52,9 @@ public class SignInActivity extends AppCompatActivity {
                 Intent intent = new Intent(SignInActivity.this,BottomNavActivity.class);
                 startActivity(intent);
             }
+            else {
+                mAuth.signOut();
+            }
         }
 
         //setting background color to orange
