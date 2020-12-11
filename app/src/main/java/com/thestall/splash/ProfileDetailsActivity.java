@@ -40,7 +40,12 @@ public class ProfileDetailsActivity extends AppCompatActivity {
                     Profile profile = dataSnapshot.child(mAuth.getCurrentUser().getUid()).getValue(Profile.class);
                     nameText.setText(profile.name);
                     phoneText.setText(profile.phone);
-                    ageText.setText(Integer.toString(profile.age));
+                    if(profile.age != -1) {
+                        ageText.setText(Integer.toString(profile.age));
+                    }
+                    else {
+                        ageText.setText("");
+                    }
                     privacySwitch.setChecked(profile.isPrivate);
                 } else {
                     nameText.setText("");
