@@ -16,14 +16,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.thestall.splash.ui.profile.Profile;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private ImageButton backBtn;
     private Button signIn;
-    private FirebaseAuth mAuth;
-    private EditText email;
-    private EditText pass;
+    private EditText email, pass, username;
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private DatabaseReference usersRef = database.getReference("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +39,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_sign_up);
 
-        mAuth = FirebaseAuth.getInstance();
-
         //setting up the email and password from signup
         email = (EditText) findViewById(R.id.SignUpEmailAddress);
         pass = (EditText) findViewById(R.id.SignUPTextPassword);
+        username = (EditText)findViewById(R.id.editTextName);
 
         //setting background color to orange
         View background = findViewById(R.id.signUpActivity);
@@ -80,6 +84,8 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            usersRef.child(user.getUid()).setValue(new Profile(username.getText().toString(), "", -1, false));
                             //send user to sign in activity on success
                             Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                             startActivity(intent);
