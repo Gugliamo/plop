@@ -53,12 +53,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
 
-            getDeviceLocation();
+            //getDeviceLocation();
 
-            /*
+
             LatLng sydney = new LatLng(-34, 151);
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
     };
 
