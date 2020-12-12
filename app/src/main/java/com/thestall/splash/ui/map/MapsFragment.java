@@ -36,6 +36,7 @@ import com.google.android.gms.tasks.Task;
 import com.thestall.splash.ProfileDetailsActivity;
 import com.thestall.splash.R;
 import com.thestall.splash.ui.post.CreatePostActivity;
+import com.thestall.splash.ui.post.PostActivity;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -165,7 +166,7 @@ public class MapsFragment extends Fragment implements
     public void onInfoWindowClick(Marker marker) {
         Toast.makeText(getContext(), (String) marker.getTag(),
                 Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getContext(), CreatePostActivity.class);
+        Intent intent = new Intent(getContext(), PostActivity.class);
         intent.putExtra("markerTag",(String)marker.getTag());
         startActivity(intent);
     }
