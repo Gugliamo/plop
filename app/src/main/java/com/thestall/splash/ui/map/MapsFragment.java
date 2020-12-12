@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -23,23 +24,30 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.thestall.splash.ProfileDetailsActivity;
 import com.thestall.splash.R;
+import com.thestall.splash.ui.post.CreatePostActivity;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback {
+public class MapsFragment extends Fragment implements
+        GoogleMap.OnInfoWindowClickListener,
+        OnMapReadyCallback {
 
     private static final String TAG = MapsFragment.class.getSimpleName();
     private GoogleMap map;
+    private CameraPosition cameraPosition;
 
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -50,6 +58,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     // The geographical location where the device is currently located. That is, the last-known
     // location retrieved by the Fused Location Provider.
     private Location lastKnownLocation;
+
+    // Keys for storing activity state.
+    private static final String KEY_CAMERA_POSITION = "camera_position";
+    private static final String KEY_LOCATION = "location";
 
     // A default location (Sydney, Australia) and default zoom to use when location permission is
     // not granted.
@@ -63,6 +75,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_maps, container, false);
+
+
+        // Retrieve location and camera position from saved instance state.
+        //doesn't seem to work
+        if (savedInstanceState != null) {
+            lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+            cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+        }
 
         // Construct a GeoDataClient.
        // mGeoDataClient = Places.getGeoDataClient(this, null);
@@ -79,6 +99,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -101,19 +123,51 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         this.map = map;
 
-        //for testing
-        LatLng bbb = new LatLng(43.61849774628669, -79.54405700022694);
-        map.addMarker(new MarkerOptions().position(bbb).title("Marker at Bed Bath and Beyond"));
-        //map.moveCamera(CameraUpdateFactory.newLatLng(bbb));
+        //!!! for testing starts  !!!
+        //setting some sample marker locations
+        LatLng pos1 = new LatLng(43.61849774628669, -79.54405700022694);
+        Marker mk1 = map.addMarker(new MarkerOptions()
+                .position(pos1)
+                .title("Bed Bath and Beyond")
+                .snippet("Washroom within"));
+        mk1.setTag("Bed Bath and Beyond Washroom");
+
+
+        LatLng pos2 = new LatLng(43.61974613542998, -79.54602846224732);
+        Marker mk2 = map.addMarker(new MarkerOptions()
+                .position(pos2)
+                .title("Subway Restaurant")
+                .snippet("Washroom within"));
+        mk2.setTag("Subway Restaurant Washroom");
+
+        LatLng pos3 = new LatLng(43.617322791744314, -79.54412945833391);
+        Marker mk3 = map.addMarker(new MarkerOptions()
+                .position(pos3)
+                .title("Taco Bell")
+                .snippet("Washroom within"));
+        mk3.setTag("Taco Bell Washroom");
+
+
+        //move to this location for now
+        map.moveCamera(CameraUpdateFactory.newLatLng(pos1));
+        //!!! for testing ends !!!
 
         //check if permissions exist and ask for them if they dont
-        //getLocationPermission();
-
-        // Turn on the My Location layer and the related control on the map.
-        updateLocationUI();
+        getLocationPermission();
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+        map.setOnInfoWindowClickListener(this);
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(getContext(), (String) marker.getTag(),
+                Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), CreatePostActivity.class);
+        intent.putExtra("markerTag",(String)marker.getTag());
+        startActivity(intent);
     }
 
     private void getLocationPermission() {
@@ -144,6 +198,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     locationPermissionGranted = true;
+                    // Turn on the My Location layer and the related control on the map.
+                    //updateLocationUI();
                 }
             }
         }
@@ -201,5 +257,17 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage(), e);
         }
+    }
+
+    /**
+     * Saves the state of the map when the activity is paused.
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if (map != null) {
+            outState.putParcelable(KEY_CAMERA_POSITION, map.getCameraPosition());
+            outState.putParcelable(KEY_LOCATION, lastKnownLocation);
+        }
+        super.onSaveInstanceState(outState);
     }
 }
