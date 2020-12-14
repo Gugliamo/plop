@@ -47,6 +47,7 @@ public class SignInActivity extends AppCompatActivity {
         signInEmail = (EditText) findViewById(R.id.SignInEmailAddress);
         signInPass = (EditText) findViewById(R.id.SignInTextPassword);
 
+        //check if user wants to be kept logged in or not
         if(mAuth.getCurrentUser() != null) {
             if(sharedPreferences.getBoolean("CheckBox_Value", false)) {
                 Intent intent = new Intent(SignInActivity.this,BottomNavActivity.class);

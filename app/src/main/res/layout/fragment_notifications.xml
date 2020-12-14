@@ -103,12 +103,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
+
     <Button
         android:id="@+id/logOutButton"
+        android:layout_width="286dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/round_rect_button_black"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/keepSignedCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/logout"
-        app:layout_constraintEnd_toEndOf="@+id/switch6"
-        app:layout_constraintStart_toStartOf="@+id/switch6"
-        app:layout_constraintTop_toBottomOf="@+id/switch6" />
+        android:layout_marginTop="20dp"
+        android:text="@string/keep_signed_in"
+        app:layout_constraintBottom_toTopOf="@+id/logOutButton"
+        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="@+id/logOutButton"
+        app:layout_constraintTop_toBottomOf="@+id/signinButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

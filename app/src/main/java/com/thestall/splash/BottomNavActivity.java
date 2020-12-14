@@ -43,28 +43,6 @@ public class BottomNavActivity extends AppCompatActivity {
             navView.getMenu().findItem(R.id.navigation_profile).getIcon().setTint(Color.argb(255, 192, 192, 192));
         }
 
-        /*
-        //catch the profile details fragment
-        //final Fragment details = getFragmentManager().findFragmentById(R.id.location_details);
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment detailsFragment = fm.findFragmentByTag("MapDetails");
-
-
-        //onclick listener for end point imageButton
-        findViewById(R.id.endLocation).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fm = getChildFragmentManager();
-                fm.beginTransaction()
-                        .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                        .hide(details)
-                        .commit();
-
-            }
-        });
-
-*/
-
     }
 
 }
