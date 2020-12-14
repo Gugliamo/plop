@@ -80,11 +80,12 @@ public class MapsFragment extends Fragment implements
 
         // Retrieve location and camera position from saved instance state.
         //doesn't seem to work
+        /*
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
-
+        */
         // Construct a GeoDataClient.
        // mGeoDataClient = Places.getGeoDataClient(this, null);
 
@@ -150,7 +151,7 @@ public class MapsFragment extends Fragment implements
 
 
         //move to this location for now
-        map.moveCamera(CameraUpdateFactory.newLatLng(pos1));
+        //map.moveCamera(CameraUpdateFactory.newLatLng(pos1));
         //!!! for testing ends !!!
 
         //check if permissions exist and ask for them if they dont
@@ -158,6 +159,7 @@ public class MapsFragment extends Fragment implements
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
 
         map.setOnInfoWindowClickListener(this);
     }
@@ -181,6 +183,7 @@ public class MapsFragment extends Fragment implements
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             locationPermissionGranted = true;
+            updateLocationUI();
         } else {
             requestPermissions(
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
