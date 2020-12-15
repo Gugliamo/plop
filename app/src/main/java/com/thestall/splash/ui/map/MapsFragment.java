@@ -183,6 +183,7 @@ public class MapsFragment extends Fragment implements
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             locationPermissionGranted = true;
+            getDeviceLocation();
             updateLocationUI();
         } else {
             requestPermissions(
@@ -207,6 +208,7 @@ public class MapsFragment extends Fragment implements
                 }
             }
         }
+        getDeviceLocation();
         updateLocationUI();
     }
 
